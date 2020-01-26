@@ -5,16 +5,16 @@
     username: "{{ lookup('env', 'VMWARE_USER') }}"
     password: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
     validate_certs: "{{ lookup('env', 'VMWARE_VALIDATE_CERTS') }}"
-    datacenter: "{{ virtualmachine_datacenter }}"
-    folder: "{{ virtualmachine_folder }}"
-    cluster: "{{ virtualmachine_cluster }}"
-    datastore: "{{ virtualmachine_datastore }}"
-    name: "{{ virtualmachine_name }}"
-    template: "{{ virtualmachine_template }}"
+    datacenter: "{{ virtualmachine.datacenter }}"
+    folder: "{{ virtualmachine.folder }}"
+    cluster: "{{ virtualmachine.cluster }}"
+    datastore: "{{ virtualmachine.datastore }}"
+    name: "{{ virtualmachine.name }}"
+    template: "{{ virtualmachine.template }}"
     networks:
-      - name: "{{ virtualmachine_network }}"
-        ip: "{{ virtualmachine_ip }}"
-        netmask: "{{ virtualmachine_netmask }}"
+      - name: "{{ virtualmachine.network }}"
+        ip: "{{ virtualmachine.ip }}"
+        netmask: "{{ virtualmachine.netmask }}"
         type: static
     customization:
       dns_servers:
