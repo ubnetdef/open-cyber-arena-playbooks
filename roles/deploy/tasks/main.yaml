@@ -1,5 +1,5 @@
 ---
-- name: Deploy virtual machine from template
+- name: Deploy from template
   vmware_guest:
     hostname: "{{ lookup('env', 'VMWARE_HOST') }}"
     username: "{{ lookup('env', 'VMWARE_USER') }}"
