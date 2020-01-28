@@ -9,7 +9,7 @@
     folder: "Arena/Pods/{{ pod.group }}/{{ pod.number }}: {{ pod.name }}"
     cluster: "{{ vcenter.cluster }}"
     datastore: "{{ vcenter.datastore }}"
-    name: "arena-p{{ pod.number }}-v1"
+    name: "oca-p{{ pod.number }}m1"
     template: "VyOS"
     networks:
       - name: "{{ vcenter.network }}"
@@ -24,7 +24,7 @@
     validate_certs: "{{ lookup('env', 'VMWARE_VALIDATE_CERTS') }}"
     datacenter: "{{ vcenter.datacenter }}"
     folder: "Arena/Pods/{{ pod.group }}/{{ pod.number }}: {{ pod.name }}"
-    vm_id: "arena-p{{ pod.number }}-v1"
+    vm_id: "oca-p{{ pod.number }}m1"
     vm_username: "vyos"
     vm_password: "vyos"
     vm_shell: /opt/arena/netconf.sh

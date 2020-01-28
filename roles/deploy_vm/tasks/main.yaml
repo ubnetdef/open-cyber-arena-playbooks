@@ -9,7 +9,7 @@
     folder: "Arena/Pods/{{ pod.group }}/{{ pod.number }}: {{ pod.name }}"
     cluster: "{{ vcenter.cluster }}"
     datastore: "{{ vcenter.datastore }}"
-    name: "{{ vm.name }}"
+    name: "oca-p{{ pod.number }}m{{ vm.number }}"
     template: "{{ vm.template }}"
     networks:
       - name: "{{ vcenter.network }}"
