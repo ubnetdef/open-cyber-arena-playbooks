@@ -1,5 +1,5 @@
 ---
-- name: deploy VyOS router
+- name: deploy VyOS router from template
   vmware_guest:
     hostname: "{{ lookup('env', 'VMWARE_HOST') }}"
     username: "{{ lookup('env', 'VMWARE_USER') }}"
@@ -9,7 +9,7 @@
     folder: "Arena/Pods/{{ pod.group }}/{{ pod.number }}: {{ pod.name }}"
     cluster: "{{ vcenter.cluster }}"
     datastore: "{{ vcenter.datastore }}"
-    name: "VyOS"
+    name: "arena-p{{ pod.number }}-v1"
     template: "VyOS"
     networks:
       - name: "{{ vcenter.network }}"
@@ -24,7 +24,7 @@
     validate_certs: "{{ lookup('env', 'VMWARE_VALIDATE_CERTS') }}"
     datacenter: "{{ vcenter.datacenter }}"
     folder: "Arena/Pods/{{ pod.group }}/{{ pod.number }}: {{ pod.name }}"
-    vm_id: "VyOS"
+    vm_id: "arena-p{{ pod.number }}-v1"
     vm_username: "vyos"
     vm_password: "vyos"
     vm_shell: /opt/arena/netconf.sh
