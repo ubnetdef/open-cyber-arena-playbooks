@@ -1,6 +1,0 @@
-vcenter_hostname: "172.16.137.144"
-vcenter_username: "arena@vsphere.local"
-vcenter_password: "Changeme1!"
-vcenter_datacenter: "XPS"
-vcenter_cluster: "Main"
-vcenter_datastore: "datastore1"
