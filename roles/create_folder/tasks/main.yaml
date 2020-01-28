@@ -1,0 +1,12 @@
+---
+- name: create folder
+  vcenter_folder:
+    hostname: "{{ lookup('env', 'VMWARE_HOST') }}"
+    username: "{{ lookup('env', 'VMWARE_USER') }}"
+    password: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
+    validate_certs: "{{ lookup('env', 'VMWARE_VALIDATE_CERTS') }}"
+    datacenter_name: "{{ vcenter.datacenter }}"
+    parent_folder: "Arena/Pods/{{ pod.group }}"
+    folder_name: "{{ pod.name }}"
+    folder_type: vm
+    state: present

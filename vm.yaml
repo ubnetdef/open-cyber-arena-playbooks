@@ -1,0 +1,6 @@
+---
+- name: deploy and provision a virtual machine
+  hosts: localhost
+  gather_facts: no
+  roles:
+    - deploy_vm

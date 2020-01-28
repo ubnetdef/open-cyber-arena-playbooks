@@ -1,6 +1,0 @@
----
-- name: virtual machine deployment and provisioning
-  hosts: localhost
-  gather_facts: no
-  roles:
-    - { role: deploy }

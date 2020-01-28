@@ -6,16 +6,16 @@
     password: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
     validate_certs: "{{ lookup('env', 'VMWARE_VALIDATE_CERTS') }}"
     datacenter: "{{ vcenter.datacenter }}"
-    folder: "{{ deploy.folder }}"
+    folder: "Arena/Pods/{{ pod.group }}/{{ pod.name }}"
     cluster: "{{ vcenter.cluster }}"
     datastore: "{{ vcenter.datastore }}"
-    name: "{{ deploy.name }}"
-    template: "{{ deploy.template }}"
+    name: "{{ vm.name }}"
+    template: "{{ vm.template }}"
     networks:
       - name: "{{ vcenter.network }}"
-        ip: "{{ deploy.ip }}"
-        gateway: "{{ deploy.gateway }}"
-        netmask: "{{ deploy.netmask }}"
+        ip: "{{ vm.network.address }}"
+        gateway: "{{ vm.network.gateway }}"
+        netmask: "{{ vm.network.netmask }}"
         type: static
     customization:
       dns_servers:

@@ -1,0 +1,7 @@
+---
+- name: create arena pod with router
+  hosts: localhost
+  gather_facts: no
+  roles:
+    - create_folder
+    - deploy_vyos
