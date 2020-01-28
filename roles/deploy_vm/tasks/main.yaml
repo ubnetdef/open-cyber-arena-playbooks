@@ -6,7 +6,7 @@
     password: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
     validate_certs: "{{ lookup('env', 'VMWARE_VALIDATE_CERTS') }}"
     datacenter: "{{ vcenter.datacenter }}"
-    folder: "Arena/Pods/{{ pod.group }}/{{ pod.name }}"
+    folder: "Arena/Pods/{{ pod.group }}/{{ pod.number }}: {{ pod.name }}"
     cluster: "{{ vcenter.cluster }}"
     datastore: "{{ vcenter.datastore }}"
     name: "{{ vm.name }}"
