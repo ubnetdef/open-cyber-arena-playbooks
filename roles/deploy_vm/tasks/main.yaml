@@ -1,21 +1,17 @@
 ---
 - name: deploy VM from template
   vmware_guest:
-    hostname: "{{ lookup('env', 'VMWARE_HOST') }}"
-    username: "{{ lookup('env', 'VMWARE_USER') }}"
-    password: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
-    validate_certs: "{{ lookup('env', 'VMWARE_VALIDATE_CERTS') }}"
-    datacenter: "{{ vcenter.datacenter }}"
-    folder: "Arena/Pods/{{ pod.group }}/{{ pod.number }}: {{ pod.name }}"
-    cluster: "{{ vcenter.cluster }}"
-    datastore: "{{ vcenter.datastore }}"
-    name: "oca-p{{ pod.number }}m{{ vm.number }}"
-    template: "{{ vm.template }}"
+    datacenter: "{{ vcenter_datacenter }}"
+    folder: "{{ pod_folder }}"
+    cluster: "{{ vcenter_cluster }}"
+    datastore: "{{ vcenter_datastore }}"
+    name: "{{ vm_name }}"
+    template: "{{ vm_template }}"
     networks:
-      - name: "{{ vcenter.network }}"
-        ip: "{{ vm.network.address }}"
-        gateway: "{{ vm.network.gateway }}"
-        netmask: "{{ vm.network.netmask }}"
+      - name: "{{ vcenter_network }}"
+        ip: "{{ vm_lan_address }}"
+        gateway: "{{ vm_lan_gateway }}"
+        netmask: "255.255.255.0"
         type: static
     customization:
       dns_servers:
@@ -23,3 +19,15 @@
         - 8.8.4.4
     state: poweredon
     wait_for_ip_address: yes
+- name: change VM password
+  vmware_vm_shell:
+    datacenter: "{{ vcenter_datacenter }}"
+    folder: "{{ pod_folder }}"
+    vm_id: "{{ vm_name }}"
+    vm_username: "root"
+    vm_password: "Changeme1!"
+    # TODO: improve this.
+    vm_shell: /opt/arena/change-password.sh
+    vm_shell_env:
+      - "USER_PASS=root:{{ vm_password }}\nsysadmin:{{ vm_password }}"
+  when: vm_password is defined

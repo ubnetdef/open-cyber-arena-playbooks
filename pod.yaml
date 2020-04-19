@@ -2,6 +2,20 @@
 - name: create arena pod with router
   hosts: localhost
   gather_facts: no
+  environment:
+    VMWARE_HOST: "{{ vcenter_hostname }}"
+    VMWARE_USER: "{{ vcenter_username }}"
+    VMWARE_PASSWORD: "{{ vcenter_password }}"
+    VMWARE_VALIDATE_CERTS: no
+  vars:
+    pod_folder: "{{ organization_folder }}/{{ pod_folder_name }}"
+    # pod_folder_name: "oca-{{ pod_number}}: {{ pod_name }}"
+    pod_folder_name: "oca-{{ '%03d' % pod_number }}"
+    pod_lan_cidr: "10.254.{{ pod_number }}.0/24"
+    # vm_name: "oca-{{ pod_number }}-1: VyOS"
+    vm_name: "oca-{{ '%03d' % pod_number }}-001"
+    vm_lan_cidr: "10.254.{{ pod_number }}.1/24"
+    vm_wan_cidr: "192.168.250.{{ pod_number }}/24"
   roles:
     - create_folder
     - deploy_vyos
