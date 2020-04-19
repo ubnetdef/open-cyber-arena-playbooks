@@ -3,9 +3,9 @@
   hosts: localhost
   gather_facts: no
   environment:
-    VMWARE_HOST: "{{ vcenter_hostname }}"
-    VMWARE_USER: "{{ vcenter_username }}"
-    VMWARE_PASSWORD: "{{ vcenter_password }}"
+    # VMWARE_HOST: "{{ vcenter_hostname }}"
+    # VMWARE_USER: "{{ vcenter_username }}"
+    # VMWARE_PASSWORD: "{{ vcenter_password }}"
     VMWARE_VALIDATE_CERTS: no
   vars:
     pod_folder: "{{ organization_folder }}/{{ pod_folder_name }}"
