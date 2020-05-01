@@ -17,5 +17,5 @@
     vm_lan_cidr: "10.254.{{ pod_number }}.1/24"
     vm_wan_cidr: "192.168.250.{{ pod_number }}/24"
   roles:
-    - create_folder
+    # - create_folder
     - deploy_vyos
