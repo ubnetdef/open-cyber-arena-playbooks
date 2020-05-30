@@ -14,8 +14,12 @@
     pod_lan_cidr: "10.254.{{ pod_number }}.0/24"
     # vm_name: "oca-{{ pod_number }}-1: VyOS"
     vm_name: "oca-{{ '%03d' % pod_number }}-001"
-    vm_lan_cidr: "10.254.{{ pod_number }}.1/24"
+    vm_lan_cidr: "10.250.{{ pod_number }}.1/24"
     vm_wan_cidr: "192.168.250.{{ pod_number }}/24"
+    vm_wan_gateway: "192.168.250.254"
   roles:
-    # - create_folder
-    - deploy_vyos
+    - create_folder
+    - role: deploy_pfsense
+      when: vm_template == 'pfsense'
+    - role: deploy_vyos
+      when: vm_template == 'vyos'

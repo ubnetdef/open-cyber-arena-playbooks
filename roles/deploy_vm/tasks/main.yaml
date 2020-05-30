@@ -19,15 +19,5 @@
         - 8.8.4.4
     state: poweredon
     wait_for_ip_address: yes
-- name: change VM password
-  vmware_vm_shell:
-    datacenter: "{{ vcenter_datacenter }}"
-    folder: "{{ pod_folder }}"
-    vm_id: "{{ vm_name }}"
-    vm_username: "root"
-    vm_password: "Changeme1!"
-    # TODO: improve this.
-    vm_shell: /opt/arena/change-password.sh
-    vm_shell_env:
-      - "USER_PASS=root:{{ vm_password }}\nsysadmin:{{ vm_password }}"
+- import_tasks: change_password.yaml
   when: vm_password is defined

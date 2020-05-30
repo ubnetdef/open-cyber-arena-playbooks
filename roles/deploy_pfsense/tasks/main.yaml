@@ -1,0 +1,34 @@
+---
+- name: deploy pfSense from template
+  vmware_guest:
+    datacenter: "{{ vcenter_datacenter }}"
+    folder: "{{ pod_folder }}"
+    cluster: "{{ vcenter_cluster }}"
+    datastore: "{{ vcenter_datastore }}"
+    name: "{{ vm_name }}"
+    template: "{{ vm_template }}"
+    networks:
+      - name: "{{ vcenter_network }}"
+      - name: "{{ vcenter_network }}"
+    state: poweredon
+    wait_for_ip_address: yes
+- name: copy pfSense provisioning script
+  vmware_guest_file_operation:
+    datacenter: "{{ vcenter_datacenter }}"
+    folder: "{{ pod_folder }}"
+    vm_id: "{{ vm_name }}"
+    vm_username: "{{ pfsense_default_username }}"
+    vm_password: "{{ pfsense_default_password }}"
+    copy:
+      src: "{{ role_path }}/files/provision.php"
+      dest: "/etc/phpshellsessions/provision"
+- name: run pfSense provisioning script
+  vmware_vm_shell:
+    datacenter: "{{ vcenter_datacenter }}"
+    folder: "{{ pod_folder }}"
+    vm_id: "{{ vm_name }}"
+    vm_username: "{{ pfsense_default_username }}"
+    vm_password: "{{ pfsense_default_password }}"
+    vm_shell: /usr/local/sbin/pfSsh.php
+    vm_shell_args: "playback provision {{ vm_wan_gateway }} {{ vm_wan_cidr }} {{ vm_lan_cidr }}"
+# TODO: Add password changing.

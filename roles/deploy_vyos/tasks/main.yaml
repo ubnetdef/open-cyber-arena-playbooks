@@ -6,7 +6,7 @@
     cluster: "{{ vcenter_cluster }}"
     datastore: "{{ vcenter_datastore }}"
     name: "{{ vm_name }}"
-    template: "vyos"
+    template: "{{ vm_template }}"
     networks:
       - name: "{{ vcenter_network }}"
       - name: "{{ vcenter_network }}"
