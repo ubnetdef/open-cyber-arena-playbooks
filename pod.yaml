@@ -11,7 +11,7 @@
     pod_folder: "{{ organization_folder }}/{{ pod_folder_name }}"
     # pod_folder_name: "oca-{{ pod_number}}: {{ pod_name }}"
     pod_folder_name: "oca-{{ '%03d' % pod_number }}"
-    pod_lan_cidr: "10.254.{{ pod_number }}.0/24"
+    pod_lan_cidr: "10.250.{{ pod_number }}.0/24"
     # vm_name: "oca-{{ pod_number }}-1: VyOS"
     vm_name: "oca-{{ '%03d' % pod_number }}-001"
     vm_lan_cidr: "10.250.{{ pod_number }}.1/24"
