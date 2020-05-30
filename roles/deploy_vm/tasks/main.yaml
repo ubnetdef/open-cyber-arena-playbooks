@@ -20,4 +20,4 @@
     state: poweredon
     wait_for_ip_address: yes
 - import_tasks: change_password.yaml
-  when: vm_password is defined
+  when: vm_password is defined and vm_password != ""
