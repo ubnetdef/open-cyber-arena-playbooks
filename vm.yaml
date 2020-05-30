@@ -13,7 +13,7 @@
     pod_folder_name: "oca-{{ '%03d' % pod_number }}"
     # vm_name: "oca-{{ pod_number }}-{{ vm_number }}: {{ vm_template }}"
     vm_name: "oca-{{ '%03d' % pod_number }}-{{ '%03d' % vm_number }}"
-    vm_lan_address: "10.254.{{ pod_number }}.{{ vm_number }}"
-    vm_lan_gateway: "10.254.{{ pod_number }}.1"
+    vm_lan_address: "10.250.{{ pod_number }}.{{ vm_number }}"
+    vm_lan_gateway: "10.250.{{ pod_number }}.1"
   roles:
     - deploy_vm

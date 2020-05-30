@@ -18,7 +18,7 @@
     vm_wan_cidr: "192.168.250.{{ pod_number }}/24"
     vm_wan_gateway: "192.168.250.254"
   roles:
-    - create_folder
+    # - create_folder
     - role: deploy_pfsense
       when: vm_template == 'pfsense'
     - role: deploy_vyos
