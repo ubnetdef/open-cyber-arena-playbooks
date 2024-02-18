@@ -13,6 +13,8 @@
         gateway: "{{ vm_lan_gateway }}"
         netmask: "255.255.255.0"
         type: static
+        connected: true
+        start_connected: true
     customization:
       dns_servers:
         - 8.8.8.8
