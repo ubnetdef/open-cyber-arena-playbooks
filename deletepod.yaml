@@ -15,7 +15,16 @@
     - set_fact:
         datacenter: "{{ vcenter_datacenter }}"
 
-    - name: create folder
+    - name: Find Guest's Folder using name
+      community.vmware.vmware_guest_find:
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        name: oca-110-001
+      delegate_to: localhost
+      register: vm_folder
+
+    - name: delete folder
       vcenter_folder:
         datacenter: "{{ vcenter_datacenter }}"
         parent_folder: "{{ organization_folder }}"
