@@ -15,15 +15,15 @@
     - set_fact:
         datacenter: "{{ vcenter_datacenter }}"
 
-    - name: Find Guest's Folder using name
-      vmware_guest_find:
-        name: oca-110-001
-      delegate_to: localhost
-      register: vm_folder
-    # - name: delete folder
-    #   vcenter_folder:
-    #     datacenter: "{{ vcenter_datacenter }}"
-    #     parent_folder: "{{ organization_folder }}"
-    #     folder_name: "{{ pod_folder_name }}"
-    #     folder_type: vm
-    #     state: absent
+    # - name: Find Guest's Folder using name
+    #   vmware_guest_find:
+    #     name: oca-110-001
+    #   delegate_to: localhost
+    #   register: vm_folder
+    - name: delete folder
+      vcenter_folder:
+        datacenter: "{{ vcenter_datacenter }}"
+        parent_folder: "/UBNetDef/vm/Arena/Pods/spearandshield/"
+        folder_name: "{{ pod_folder_name }}"
+        folder_type: vm
+        state: absent
