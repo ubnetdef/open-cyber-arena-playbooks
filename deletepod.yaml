@@ -1,0 +1,24 @@
+---
+- name: Remove folder
+  hosts: localhost
+  gather_facts: no
+  environment:
+    # VMWARE_HOST: "{{ vcenter_hostname }}"
+    # VMWARE_USER: "{{ vcenter_username }}"
+    # VMWARE_PASSWORD: "{{ vcenter_password }}"
+    VMWARE_VALIDATE_CERTS: no
+  vars:
+    pod_folder: "{{ organization_folder }}/{{ pod_folder_name }}"
+    # pod_folder_name: "oca-{{ pod_number}}: {{ pod_name }}"
+    pod_folder_name: "oca-{{ '%03d' % pod_number }}"
+  tasks:
+    - set_fact:
+        datacenter: "{{ vcenter_datacenter }}"
+
+    - name: create folder
+      vcenter_folder:
+        datacenter: "{{ vcenter_datacenter }}"
+        parent_folder: "{{ organization_folder }}"
+        folder_name: "{{ pod_folder_name }}"
+        folder_type: vm
+        state: absent
