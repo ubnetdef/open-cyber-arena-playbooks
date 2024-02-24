@@ -17,9 +17,6 @@
 
     - name: Find Guest's Folder using name
       vmware_guest_find:
-        hostname: "{{ vcenter_hostname }}"
-        username: "{{ vcenter_username }}"
-        password: "{{ vcenter_password }}"
         name: oca-110-001
       delegate_to: localhost
       register: vm_folder
