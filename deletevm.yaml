@@ -1,0 +1,51 @@
+---
+- name: Remove virtual machine
+  hosts: localhost
+  gather_facts: no
+  environment:
+    # VMWARE_HOST: "{{ vcenter_hostname }}"
+    # VMWARE_USER: "{{ vcenter_username }}"
+    # VMWARE_PASSWORD: "{{ vcenter_password }}"
+    VMWARE_VALIDATE_CERTS: no
+  vars:
+    pod_folder: "{{ organization_folder }}/{{ pod_folder_name }}"
+    # pod_folder_name: "oca-{{ pod_number}}: {{ pod_name }}"
+    pod_folder_name: "oca-{{ '%03d' % pod_number }}"
+    # vm_name: "oca-{{ pod_number }}-{{ vm_number }}: {{ vm_template }}"
+    vm_name: "oca-{{ '%03d' % pod_number }}-{{ '%03d' % vm_number }}"
+    vm_lan_address: "10.250.{{ pod_number }}.{{ vm_number }}"
+    vm_lan_gateway: "10.250.{{ pod_number }}.1"
+  tasks:
+    - set_fact:
+        vm_name: "oca-{{ '%03d' % pod_number }}-{{ '%03d' % vm_number }}"
+        datacenter: "{{ vcenter_datacenter }}"
+
+    - name: Remove "{{ vm_name }}"
+      vmware_guest:
+        validate_certs: no
+        cluster: "{{ vcenter_cluster }}"
+        name: "oca-{{ '%03d' % pod_number }}-{{ '%03d' % vm_number }}"
+        state: absent
+      delegate_to: localhost
+      register: facts
+
+
+---
+- name: deploy and provision a virtual machine
+  hosts: localhost
+  gather_facts: no
+  environment:
+    # VMWARE_HOST: "{{ vcenter_hostname }}"
+    # VMWARE_USER: "{{ vcenter_username }}"
+    # VMWARE_PASSWORD: "{{ vcenter_password }}"
+    VMWARE_VALIDATE_CERTS: no
+  vars:
+    pod_folder: "{{ organization_folder }}/{{ pod_folder_name }}"
+    # pod_folder_name: "oca-{{ pod_number}}: {{ pod_name }}"
+    pod_folder_name: "oca-{{ '%03d' % pod_number }}"
+    # vm_name: "oca-{{ pod_number }}-{{ vm_number }}: {{ vm_template }}"
+    vm_name: "oca-{{ '%03d' % pod_number }}-{{ '%03d' % vm_number }}"
+    vm_lan_address: "10.250.{{ pod_number }}.{{ vm_number }}"
+    vm_lan_gateway: "10.250.{{ pod_number }}.1"
+  roles:
+    - deploy_vm
