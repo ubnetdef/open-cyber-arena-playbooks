@@ -14,7 +14,6 @@
   tasks:
     - set_fact:
         datacenter: "{{ vcenter_datacenter }}"
-
     - name: delete folder
       community.vmware.vcenter_folder:
         # hostname: '{{ vcenter_hostname }}'
