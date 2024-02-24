@@ -23,7 +23,7 @@
     - name: delete folder
       vcenter_folder:
         datacenter: "{{ vcenter_datacenter }}"
-        parent_folder: "UBNetDef/vm/Arena/Pods/spearandshield"
+        parent_folder: "UBNetDef/vm/Arena/Pods/spearandshield/"
         folder_name: "{{ pod_folder_name }}"
         folder_type: vm
         state: absent
