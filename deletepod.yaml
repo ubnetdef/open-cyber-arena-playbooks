@@ -15,19 +15,14 @@
     - set_fact:
         datacenter: "{{ vcenter_datacenter }}"
 
-    - name: Find Guest's Folder using name
-      community.vmware.vmware_guest_find:
-        hostname: "{{ vcenter_hostname }}"
-        username: "{{ vcenter_username }}"
-        password: "{{ vcenter_password }}"
-        name: oca-110-001
+    - name: delete folder
+      community.vmware.vcenter_folder:
+        # hostname: '{{ vcenter_hostname }}'
+        # username: '{{ vcenter_username }}'
+        # password: '{{ vcenter_password }}'
+        datacenter_name: '{{ vcenter_datacenter }}'
+        folder_name: '{{ pod_folder_name }}'
+        parent_folder: '{{ organization_folder }}'
+        state: absent
+      # register: sub_folder_creation_result
       delegate_to: localhost
-      register: vm_folder
-
-    # - name: delete folder
-    #   vcenter_folder:
-    #     datacenter: "{{ vcenter_datacenter }}"
-    #     parent_folder: "{{ organization_folder }}"
-    #     folder_name: "{{ pod_folder_name }}"
-    #     folder_type: vm
-    #     state: absent
