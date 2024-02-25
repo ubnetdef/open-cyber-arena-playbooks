@@ -24,7 +24,7 @@
     - name: Get all VMs from prod
       vmware_vm_info:
         validate_certs: False
-        folder: "Arena"
+        folder: "{{ organization_folder }}"
       # register: vms_in_folder
       
 
