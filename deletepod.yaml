@@ -25,7 +25,7 @@
       vmware_vm_info:
         validate_certs: False
         folder: "{{ pod_folder }}"
-      register: vms_in_folder
+      # register: vms_in_folder
       
 
     - name: Remove VM
