@@ -25,3 +25,4 @@
         state: absent
       delegate_to: localhost
       register: facts
+      force: true
