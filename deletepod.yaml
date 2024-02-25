@@ -26,4 +26,4 @@
         parent_folder: "Arena"
         folder_name: "{{ pod_folder_name }}"
         folder_type: vm
-        # state: absent
+        state: absent
