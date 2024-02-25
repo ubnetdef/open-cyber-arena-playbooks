@@ -26,4 +26,4 @@
         parent_folder: "Arena/Pods/spearandshield"
         folder_name: "{{ pod_folder_name }}"
         folder_type: vm
-        state: absent
+        # state: absent
