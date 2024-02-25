@@ -22,7 +22,7 @@
         validate_certs: no
         cluster: "{{ vcenter_cluster }}"
         name: "oca-{{ '%03d' % pod_number }}-{{ '%03d' % vm_number }}"
+        force: true
         state: absent
       delegate_to: localhost
       register: facts
-      force: true
