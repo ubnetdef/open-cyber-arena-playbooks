@@ -37,7 +37,7 @@
         state: "absent"
       delegate_to: localhost
       register: facts
-      loop: {{ vms_in_folder }}
+      loop: "{{ vms_in_folder }}"
 
     - name: delete folder
       vcenter_folder:
