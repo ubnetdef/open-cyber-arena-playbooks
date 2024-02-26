@@ -32,7 +32,7 @@
       vmware_guest:
         validate_certs: no
         cluster: "{{ vcenter_cluster }}"
-        name: "{{ item.vm_name }}"
+        name: "{{ item.guest_name }}"
         force: true
         state: "absent"
       delegate_to: localhost
