@@ -21,28 +21,28 @@
     #   delegate_to: localhost
     #   register: vm_folder
 
-    - name: Get all VMs from prod
-      vmware_vm_info:
-        validate_certs: False
-        folder: "{{ pod_folder }}"
-      register: vms_in_folder
+    # - name: Get all VMs from prod
+    #   vmware_vm_info:
+    #     validate_certs: False
+    #     folder: "{{ pod_folder }}"
+    #   register: vms_in_folder
       
 
-    - name: Remove VM
-      vmware_guest:
-        validate_certs: no
-        cluster: "{{ vcenter_cluster }}"
-        name: "{{ item.guest_name }}"
-        force: true
-        state: "absent"
-      delegate_to: localhost
-      register: facts
-      loop: "{{ vms_in_folder.virtual_machines }}"
+    # - name: Remove VM
+    #   vmware_guest:
+    #     validate_certs: no
+    #     cluster: "{{ vcenter_cluster }}"
+    #     name: "{{ item.guest_name }}"
+    #     force: true
+    #     state: "absent"
+    #   delegate_to: localhost
+    #   register: facts
+    #   loop: "{{ vms_in_folder.virtual_machines }}"
 
     - name: delete folder
       vcenter_folder:
         datacenter: "{{ vcenter_datacenter }}"
-        parent_folder: "Arena"
+        parent_folder: "{{ organization_folder }}"
         folder_name: "{{ pod_folder_name }}"
         folder_type: vm
         state: absent
