@@ -32,12 +32,12 @@
       vmware_guest:
         validate_certs: no
         cluster: "{{ vcenter_cluster }}"
-        name: "{{ vms_in_folder.vm_name }}"
+        name: "{{ item.vm_name }}"
         force: true
         state: "absent"
       delegate_to: localhost
       register: facts
-      loop: "{{ vms_in_folder }}"
+      loop: "{{ vms_in_folder.virtual_machines }}"
 
     - name: delete folder
       vcenter_folder:
