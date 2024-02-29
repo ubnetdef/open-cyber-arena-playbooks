@@ -42,7 +42,7 @@
     - name: delete folder
       vcenter_folder:
         datacenter: "{{ vcenter_datacenter }}"
-        parent_folder: "{{ organization_folder }}"
+        parent_folder: "Arena"
         folder_name: "{{ pod_folder_name }}"
         folder_type: vm
         state: absent
