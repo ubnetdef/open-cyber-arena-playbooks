@@ -1,0 +1,25 @@
+---
+- name: deploy attacker VM from template
+  vmware_guest:
+    datacenter: "{{ vcenter_datacenter }}"
+    folder: "{{ pod_folder }}" # e.g UBNetDef/vm/Arena/Pods/AttackMachines
+    cluster: "{{ vcenter_cluster }}"
+    datastore: "{{ vcenter_datastore }}"
+    name: "{{ vm_name }}"
+    template: "{{ vm_template }}"
+    networks:
+      - name: "core-red-net"
+        # ip: "{{ vm_lan_address }}"
+        # gateway: "{{ vm_lan_gateway }}"
+        # netmask: "255.255.255.0"
+        # type: static
+        connected: true
+        start_connected: true
+    customization:
+      dns_servers:
+        - 8.8.8.8
+        - 8.8.4.4
+    state: poweredon
+    wait_for_ip_address: yes
+# - import_tasks: change_password.yaml
+  # when: vm_password is defined and vm_password != ""
