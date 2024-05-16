@@ -11,6 +11,7 @@
     # folder: "{{ organization_folder }}/{{ pod_folder_name }}"
     # pod_folder_name: "oca-{{ pod_number}}: {{ pod_name }}"
     pod_folder_name: "oca-{{ '%03d' % pod_number }}"
+    folder: "UBNetDef/vm/Arena/spearandshield/AttackMachines"
     # vm_name: "oca-{{ pod_number }}-{{ vm_number }}: {{ vm_template }}"
     vm_name: "oca-{{ '%03d' % pod_number }}"
     # vm_lan_address: "10.250.{{ pod_number }}.{{ vm_number }}"
