@@ -2,7 +2,7 @@
 - name: deploy attacker VM from template
   vmware_guest:
     datacenter: "{{ vcenter_datacenter }}"
-    folder: "{{ pod_folder }}" # e.g UBNetDef/vm/Arena/Pods/AttackMachines
+    folder: "{{ folder }}" # e.g UBNetDef/vm/Arena/Pods/AttackMachines
     cluster: "{{ vcenter_cluster }}"
     datastore: "{{ vcenter_datastore }}"
     name: "{{ vm_name }}"

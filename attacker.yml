@@ -8,11 +8,11 @@
     # VMWARE_PASSWORD: "{{ vcenter_password }}"
     VMWARE_VALIDATE_CERTS: no
   vars:
-    pod_folder: "{{ organization_folder }}/{{ pod_folder_name }}"
+    # folder: "{{ organization_folder }}/{{ pod_folder_name }}"
     # pod_folder_name: "oca-{{ pod_number}}: {{ pod_name }}"
     pod_folder_name: "oca-{{ '%03d' % pod_number }}"
     # vm_name: "oca-{{ pod_number }}-{{ vm_number }}: {{ vm_template }}"
-    vm_name: "oca-{{ '%03d' % pod_number }}-{{ '%03d' % vm_number }}"
+    vm_name: "oca-{{ '%03d' % pod_number }}"
     # vm_lan_address: "10.250.{{ pod_number }}.{{ vm_number }}"
     # vm_lan_gateway: "10.250.{{ pod_number }}.1"
   roles:
