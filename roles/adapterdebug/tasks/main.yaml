@@ -1,6 +1,6 @@
 ---
 - name: Attempt to reconnect adapter
-  community.vmware.vmware_guest:
+  vmware_guest:
     validate_certs: false
     hostname: "cdr-vcenter.cse.buffalo.edu"
     username: "open-cyber-arena@vsphere.local"
