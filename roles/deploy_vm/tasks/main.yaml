@@ -21,5 +21,17 @@
         - 8.8.4.4
     state: poweredon
     wait_for_ip_address: yes
+- name: Make sure connected
+  vmware_guest:
+    name: "{{ vm_name }}"
+    networks:
+      - name: "{{ vcenter_network }}"
+        ip: "{{ vm_lan_address }}"
+        gateway: "{{ vm_lan_gateway }}"
+        netmask: "255.255.255.0"
+        type: static
+        connected: true
+        start_connected: true
+    wait_for_ip_address: yes
 - import_tasks: change_password.yaml
   when: vm_password is defined and vm_password != ""
