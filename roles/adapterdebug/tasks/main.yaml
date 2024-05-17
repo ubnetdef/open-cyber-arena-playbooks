@@ -1,0 +1,19 @@
+---
+- name: Attempt to reconnect adapter
+  community.vmware.vmware_guest:
+    validate_certs: false
+    hostname: "cdr-vcenter.cse.buffalo.edu"
+    username: "open-cyber-arena@vsphere.local"
+    password: "Tzk*NhcboLZC!6w"
+    name: "oca-030-002"
+    datacenter: "UBNetDef"
+    cluster: "MAIN"
+    datastore: "THE-VAULT"
+    networks:
+      - name: "arena-net"
+        ip: "10.250.30.2"
+        gateway: "10.250.30.1"
+        netmask: "255.255.255.0"
+        type: static
+        connected: true
+        start_connected: true
