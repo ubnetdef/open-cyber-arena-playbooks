@@ -13,8 +13,6 @@
         gateway: "{{ vm_lan_gateway }}"
         netmask: "255.255.255.0"
         type: static
-        connected: true
-        start_connected: true
     customization:
       dns_servers:
         - 8.8.8.8
@@ -33,7 +31,5 @@
         gateway: "{{ vm_lan_gateway }}"
         netmask: "255.255.255.0"
         type: static
-        connected: true
-        start_connected: true
 - import_tasks: change_password.yaml
   when: vm_password is defined and vm_password != ""
