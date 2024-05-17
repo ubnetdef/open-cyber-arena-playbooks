@@ -24,6 +24,9 @@
 - name: Make sure connected
   vmware_guest:
     name: "{{ vm_name }}"
+    datacenter: "{{ vcenter_datacenter }}"
+    cluster: "{{ vcenter_cluster }}"
+    datastore: "{{ vcenter_datastore }}"
     networks:
       - name: "{{ vcenter_network }}"
         ip: "{{ vm_lan_address }}"
