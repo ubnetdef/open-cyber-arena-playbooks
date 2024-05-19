@@ -35,5 +35,12 @@
         type: static
         connected: true
         start_connected: true
+- name: Restart VM
+  vmware_guest:
+    name: "{{ vm_name }}"
+    datacenter: "{{ vcenter_datacenter }}"
+    cluster: "{{ vcenter_cluster }}"
+    datastore: "{{ vcenter_datastore }}"
+    state: "restarted"
 - import_tasks: change_password.yaml
   when: vm_password is defined and vm_password != ""
