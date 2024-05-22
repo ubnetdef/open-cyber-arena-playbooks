@@ -6,7 +6,7 @@
     cluster: "{{ vcenter_cluster }}"
     datastore: "{{ vcenter_datastore }}"
     name: "{{ vm_name }}"
-    template: "{{ vm_template }}"
+    template: "arena_pfsense"
     networks:
       - name: "{{ vcenter_network }}"
       - name: "{{ vcenter_network }}"
