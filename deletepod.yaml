@@ -36,6 +36,7 @@
         force: true
         state: "absent"
       delegate_to: localhost
+      folder: UBNetDef/Arena/Pods/spearandshield/
       register: facts
       loop: "{{ vms_in_folder.virtual_machines }}"
 
